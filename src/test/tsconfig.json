@@ -1,0 +1,19 @@
+{
+  "extends": "../ts/base-config/tsconfig.json",
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "lib": [
+      "es2017"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "../ts/declaration"
+    ],
+    "types": [
+      "node",
+      "mocha"
+    ],
+    "sourceMap": false
+  }
+}

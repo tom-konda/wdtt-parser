@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+      "module": "es2015",
+      "moduleResolution": "node",
+      "target": "es2018",
+      "lib": [
+        "es2018"
+      ],
+      "types": [],
+      "strict": true,
+      "sourceMap": false,
+      "outDir": "../../../temp/js/lib"
+  }
+}
