@@ -7,8 +7,12 @@
         "es2018"
       ],
       "types": [],
+      "typeRoots": [
+        "node_modules/@types",
+        "declaration"
+      ],
       "strict": true,
       "sourceMap": false,
-      "outDir": "../../../temp/js/lib"
+      "outDir": "../../../temp/lib"
   }
 }

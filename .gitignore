@@ -1,3 +1,5 @@
 /node_modules
 Thumb.db
 .DS_Store
+/temp
+/lib
