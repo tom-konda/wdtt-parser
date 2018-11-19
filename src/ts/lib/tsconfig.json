@@ -4,15 +4,16 @@
       "moduleResolution": "node",
       "target": "es2018",
       "lib": [
+        "es2015",
         "es2018"
       ],
-      "types": [],
       "typeRoots": [
         "node_modules/@types",
-        "declaration"
+        "../../../declaration"
       ],
       "strict": true,
       "sourceMap": false,
       "outDir": "../../../temp/lib"
-  }
+  },
+  "extends": "../../../tsconfig.json"
 }
