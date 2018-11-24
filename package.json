@@ -1,21 +1,23 @@
 {
   "name": "@tom-konda/wdtt_parser",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/wdtt-parser.cjs.js",
   "author": "Tom Konda",
   "license": "MIT",
   "directories": {
-    "test": "src/test/"
+    "test": "src/tests/"
   },
   "scripts": {
-    "prebuild": "npm run clean",
+    "prebuild": "npm-run-all clean:*",
     "build": "npm-run-all test --parallel ts:build-* --serial rollup:*-banner rollup:trans-*",
-    "postbuild": "npm run doc-gen",
+    "postbuild": "npm-run-all clean:temp doc-gen",
     "ts:build-lib": "tsc -p ./src/ts/lib",
-    "clean": "node -e \"require('shelljs').rm('-R', ['./temp','./lib', './doc', './index.js']);\"",
+    "clean:build": "node -e \"require('shelljs').rm('-R', ['./lib', './doc']);\"",
+    "clean:temp": "node -e \"require('shelljs').rm('-R', ['./temp']);\"",
+    "doc-gen": "typedoc --name WDTTParser --excludeExternals --target es2015 --module es2015 --includeDeclarations --out ./doc ./declaration/wdtt-parser/index.d.ts",
     "rollup:lib-banner": "rollup -c ./rollup-configs/rollup.config.js",
     "rollup:trans-node": "rollup -c ./rollup-configs/rollup.config.cjs.js",
-    "test": "cross-env TS_NODE_TRANSPILE_ONLY=1 mocha --require espower-typescript/guess src/test/**.ts"
+    "test": "cross-env TS_NODE_TRANSPILE_ONLY=1 mocha --require espower-typescript/guess src/tests/**.ts"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.5",
