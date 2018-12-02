@@ -3,3 +3,8 @@ Thumb.db
 .DS_Store
 /temp
 /src
+/rollup-configs
+tslint.json
+tsconfig.json
+yarn-error.log
+.travis.yml
