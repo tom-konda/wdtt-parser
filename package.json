@@ -20,6 +20,7 @@
     "test": "cross-env TS_NODE_TRANSPILE_ONLY=1 mocha --require espower-typescript/guess src/tests/**.ts"
   },
   "devDependencies": {
+    "@types/iconv-lite": "^0.0.1",
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.12.9",
     "cross-env": "^5.2.0",
