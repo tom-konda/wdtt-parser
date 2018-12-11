@@ -1,5 +1,5 @@
 {
-  "name": "@tom-konda/wdtt_parser",
+  "name": "@tom-konda/wdtt-parser",
   "version": "1.0.0",
   "main": "lib/wdtt-parser.cjs.js",
   "author": "Tom Konda",
