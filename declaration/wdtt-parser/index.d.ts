@@ -1,3 +1,7 @@
+declare module '@tom-konda/wdtt-parser' {
+  export default function (wdtt: string) : wdttDefaultJSON
+}
+
 type fontStyle = {
   fontFamily: string,
   fontSize: number,
