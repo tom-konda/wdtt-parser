@@ -53,22 +53,31 @@ const wdttParse = (() => {
 
     return {
       title,
-      subtitles : Object.assign(subtitleFontStyle, {
-        texts : [
-          timetableSupervisor,
-          timetableValidDate,
-        ],
-      }),
-      remarks : Object.assign(remarkFontStyle, {
-        texts: remarkTexts,
-      }),
+      remarks : {
+        ...remarkFontStyle,
+        ...{
+          texts: remarkTexts,
+        },
+      },
       timetable: {
         timetableDefaultDirection,
+        subtitles : {
+          ...subtitleFontStyle,
+          ...{
+            texts : [
+              timetableSupervisor,
+              timetableValidDate,
+            ],
+          },
+        },
         trainsPerHour,
-        title: Object.assign(titleFontStyle, {
-          text: timetableTitleText,
-          color: `#${titleColor}`,
-        }),
+        title: {
+          ...titleFontStyle,
+          ...{
+            text: timetableTitleText,
+            color: `#${titleColor}`,
+          },
+        },
         header: {
           outboundTitle: timetableOutboundTitle,
           inboundTitle: timetableInboundTitle,
@@ -84,20 +93,29 @@ const wdttParse = (() => {
         cell: {
           width: cellWidth,
           height: cellHeight,
-          time: Object.assign(cellTimeFontStyle, {
-            x: cellTimePosX,
-            y: cellTimePosY,
-          }),
-          service: Object.assign(cellTrainServiceFontStyle, {
-            x: cellTrainServicePosX,
-            y: cellTrainServicePosY,
-            display: trainServiceDisplayFlag === 1,
-          }),
-          destination: Object.assign(cellTrainDestinationFontStyle, {
-            x: destinationPosX,
-            y: destinationPosY,
-            display: destinationDisplayFlag === 1,
-          }),
+          time: {
+            ...cellTimeFontStyle,
+            ...{
+              x: cellTimePosX,
+              y: cellTimePosY,
+            },
+          },
+          service: {
+            ...cellTrainServiceFontStyle,
+            ...{
+              x: cellTrainServicePosX,
+              y: cellTrainServicePosY,
+              display: trainServiceDisplayFlag === 1,
+            }
+          },
+          destination: {
+            ...cellTrainDestinationFontStyle,
+            ...{
+              x: destinationPosX,
+              y: destinationPosY,
+              display: destinationDisplayFlag === 1,
+            }
+          },
         },
       },
       trainService,

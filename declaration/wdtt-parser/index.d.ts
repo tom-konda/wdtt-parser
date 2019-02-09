@@ -51,6 +51,7 @@ type timetable = {
     text: string,
     color: string,
   }>,
+  subtitles: subtitles,
   header: {
     outboundTitle: string,
     inboundTitle: string,
@@ -89,7 +90,6 @@ type trainData = {
 
 type wdttDefaultJSON = {
   title : string,
-  subtitles: subtitles,
   remarks: remarks,
   timetable: timetable,
   trainService: trainService[],

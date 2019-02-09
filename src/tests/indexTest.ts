@@ -101,22 +101,23 @@ describe(
       italicFlag: false,
     };
     const defaultSubtitleStyle = defaultRemarkStyle;
-    const defaultSubtitles = Object.assign(
-      {},
-      defaultSubtitleStyle, {
+    const defaultSubtitles = {
+      ...{},
+      ...defaultSubtitleStyle,
+      ...{
         texts: [
           '＊＊鉄道監修',
           '平成00年00月00日改正',
         ],
       }
-    );
-    const defaultRemarks = Object.assign(
-      {},
-      defaultRemarkStyle,
-      {
+    };
+    const defaultRemarks = {
+      ...{},
+      ...defaultRemarkStyle,
+      ...{
         texts: [],
       },
-    );
+    };
 
     const defaultTimetable = {
       cell: {
@@ -180,12 +181,12 @@ describe(
         italicFlag: false,
         text: '＊＊駅列車標準時刻表',
       },
+      subtitles: defaultSubtitles,
       trainsPerHour: 8,
     };
 
     const minimumData = {
       title: '無題',
-      subtitles: defaultSubtitles,
       destinations: defaultDestinationData,
       trainService: defaultTrainService,
       timetable: defaultTimetable,
