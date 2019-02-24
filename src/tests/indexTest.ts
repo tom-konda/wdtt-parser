@@ -174,14 +174,16 @@ describe(
       },
       timetableDefaultDirection: 0,
       title: {
-        boldFlag: false,
         color: '#000000',
-        fontFamily: 'ＭＳ ゴシック',
-        fontSize: 16,
-        italicFlag: false,
-        text: '＊＊駅列車標準時刻表',
+        mainTitle: {
+          boldFlag: false,
+          fontFamily: 'ＭＳ ゴシック',
+          fontSize: 16,
+          italicFlag: false,
+          text: '＊＊駅列車標準時刻表',
+        },      
+        subtitles: defaultSubtitles,
       },
-      subtitles: defaultSubtitles,
       trainsPerHour: 8,
     };
 

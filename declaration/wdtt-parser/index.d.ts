@@ -47,11 +47,13 @@ type cell = {
 type timetable = {
   timetableDefaultDirection: number,
   trainsPerHour: number,
-  title: fontStyleMergedType<{
-    text: string,
+  title: {
     color: string,
-  }>,
-  subtitles: subtitles,
+    mainTitle: fontStyleMergedType<{
+      text: string,
+    }>,
+    subtitles: subtitles,
+  }
   header: {
     outboundTitle: string,
     inboundTitle: string,

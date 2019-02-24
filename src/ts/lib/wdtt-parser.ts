@@ -61,21 +61,23 @@ const wdttParse = (() => {
       },
       timetable: {
         timetableDefaultDirection,
-        subtitles : {
-          ...subtitleFontStyle,
-          ...{
-            texts : [
-              timetableSupervisor,
-              timetableValidDate,
-            ],
-          },
-        },
         trainsPerHour,
         title: {
-          ...titleFontStyle,
-          ...{
-            text: timetableTitleText,
-            color: `#${titleColor}`,
+          color: `#${titleColor}`,
+          mainTitle: {
+            ...titleFontStyle,
+            ...{
+              text: timetableTitleText,
+            }
+          },
+          subtitles : {
+            ...subtitleFontStyle,
+            ...{
+              texts : [
+                timetableSupervisor,
+                timetableValidDate,
+              ],
+            },
           },
         },
         header: {
