@@ -45,7 +45,7 @@ type cell = {
 }
 
 type timetable = {
-  timetableDefaultDirection: number,
+  orientation: number,
   trainsPerHour: number,
   title: {
     color: string,

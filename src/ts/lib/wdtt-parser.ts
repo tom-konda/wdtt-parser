@@ -61,9 +61,9 @@ const wdttParse = (() => {
     };
 
     const outboundTrainsSectionText = getSectionText(wtt, '下り', '上り');
-    let outboundTrains:trainData[] = outboundTrainsSectionText.length ? outboundTrainsSectionText.split('\n').map(getTrainData) : [];
+    const outboundTrains:trainData[] = outboundTrainsSectionText.length ? outboundTrainsSectionText.split('\n').map(getTrainData) : [];
     const inboundTrainsSectionText = getSectionText(wtt, '上り');
-    let inboundTrains:trainData[] = inboundTrainsSectionText.length ? inboundTrainsSectionText.split('\n').map(getTrainData) : [];
+    const inboundTrains:trainData[] = inboundTrainsSectionText.length ? inboundTrainsSectionText.split('\n').map(getTrainData) : [];
 
     return {
       title,
@@ -74,7 +74,7 @@ const wdttParse = (() => {
         },
       },
       timetable: {
-        timetableDefaultDirection,
+        orientation: timetableOrientation,
         trainsPerHour,
         title: {
           color: `#${titleColor}`,
