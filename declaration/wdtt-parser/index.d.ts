@@ -81,13 +81,13 @@ type destination = {
 }
 
 type trainData = {
-  destination: string,
+  serviceType: number,
   trainID: string,
   trainServiceName: string,
-  trainServiceNumber: string,
+  trainServiceNumber: number | null,
   departureTime: string,
-  serviceType: string,
-  operationDatePattern: string,
+  destination: number,
+  operationDatePattern: number,
 }
 
 type wdttDefaultJSON = {

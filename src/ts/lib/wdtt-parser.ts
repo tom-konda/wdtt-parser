@@ -16,20 +16,27 @@ const wdttParse = (() => {
     wtt = wtt.replace(/\r/g, '');
     const title = getSectionText(wtt, 'WinDIATimeTable', '表示');
     const [timetableTitleText, timetableValidDate, timetableSupervisor, timetableOutboundTitle, timetableInboundTitle, timetableStyle, cellStyle, colorStyle, ...fontStyle] = getSectionText(wtt, '表示', '凡例').split('\n');
-    const [timetableDefaultDirection, trainsPerHour] = timetableStyle.split(',').map(Number);
+    const [timetableOrientation, trainsPerHour] = timetableStyle.split(',').map(Number);
     const [cellWidth, cellHeight, cellTimePosX, cellTimePosY, cellTrainServicePosX, cellTrainServicePosY, destinationPosX, destinationPosY, trainServiceDisplayFlag, destinationDisplayFlag] = cellStyle.split(',').map(Number);
     const [titleColor, weekdayColor, weekdayBackGround, saturdayColor, saturdayBackground, holidayColor, holidayBackground] = colorStyle.split(',');
-    const [titleFontStyle, remarkFontStyle, headerDirectionFontStyle, headerHourFontStyle, cellTimeFontStyle, cellTrainServiceFontStyle, cellTrainDestinationFontStyle, subtitleFontStyle] = fontStyle.map(styles => {
+    const [titleFontStyle, subtitleFontStyle, headerDirectionFontStyle, headerHourFontStyle, cellTimeFontStyle, cellTrainServiceFontStyle, cellTrainDestinationFontStyle, remarkFontStyle] = fontStyle.map(styles => {
       const [fontFamily, fontSize, italicFlag, boldFlag] = styles.split(',');
       return {fontFamily, fontSize: Number(fontSize), italicFlag: italicFlag === '1', boldFlag: boldFlag === '1'};
     });
     const remarkSectionText = getSectionText(wtt, '凡例', '種別');
-    const [, ...remarkData] = remarkSectionText.split('Remark');
-    const remarkTexts:remarkText[] = remarkData.map((remarkRow) => {
-      const [isInbound, remark] = remarkRow.split('=');
-      const [xPos, yPos, isVertical, textColor, content,] = remark.split(',');
-      return { isInbound: isInbound === '1', x: Number(xPos), y: Number(yPos), isVertical: isVertical === '1', textColor, content }
+    const remarks = remarkSectionText.match(/Remark[01]=[0-9]+,[0-9]+,[0-9]+,[0-9A-F]+,(.|\n(?=\t))+/g) || [];
+    
+    const remarkTexts:remarkText[] = remarks.map((remarkRow) => {
+      const [,isInbound, xPos, yPos, isVertical, textColor, content] = remarkRow.match(/Remark([01])=([0-9]+),([0-9]+),([0-9]+),([0-9A-F]+),([\S\s]+)/) as RegExpMatchArray;
+      return {
+        isInbound: isInbound === '1',
+        x: Number(xPos), y: Number(yPos),
+        isVertical: isVertical === '1',
+        textColor : `#${textColor}`,
+        content : content.replace(/\t/g, ''),
+      }
     });
+
     const trainService:trainService[] = getSectionText(wtt, '種別', '行先').split('\n').map((value) => {
       const [, trainServiceData] = value.split('=');
       const [serviceType, serviceAbbr, timetableColorText] = trainServiceData.split(',');
@@ -42,8 +49,15 @@ const wdttParse = (() => {
     });
 
     const getTrainData = (trainText:string) => {
-      const [destination, trainID, trainServiceName, trainServiceNumber, departureTime, serviceType, operationDatePattern] = trainText.split(',');
-      return {destination, trainID, trainServiceName, trainServiceNumber, departureTime, serviceType, operationDatePattern};
+      const [serviceType, trainID, trainServiceName, trainServiceNumber, departureTime, destination, operationDatePattern] = trainText.split(',');
+      return {
+        serviceType: Number(serviceType),
+        trainID, trainServiceName,
+        trainServiceNumber: trainServiceNumber === '' ? null : Number(trainServiceNumber),
+        departureTime,
+        destination: Number(destination),
+        operationDatePattern: Number(operationDatePattern)
+      };
     };
 
     const outboundTrainsSectionText = getSectionText(wtt, '下り', '上り');
