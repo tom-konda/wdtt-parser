@@ -20,8 +20,8 @@ const wdttParse = (() => {
     const [cellWidth, cellHeight, cellTimePosX, cellTimePosY, cellTrainServicePosX, cellTrainServicePosY, destinationPosX, destinationPosY, trainServiceDisplayFlag, destinationDisplayFlag] = cellStyle.split(',').map(Number);
     const [titleColor, weekdayColor, weekdayBackGround, saturdayColor, saturdayBackground, holidayColor, holidayBackground] = colorStyle.split(',');
     const [titleFontStyle, subtitleFontStyle, headerDirectionFontStyle, headerHourFontStyle, cellTimeFontStyle, cellTrainServiceFontStyle, cellTrainDestinationFontStyle, remarkFontStyle] = fontStyle.map(styles => {
-      const [fontFamily, fontSize, italicFlag, boldFlag] = styles.split(',');
-      return {fontFamily, fontSize: Number(fontSize), italicFlag: italicFlag === '1', boldFlag: boldFlag === '1'};
+      const [fontFamily, fontSize, boldFlag, italicFlag] = styles.split(',');
+      return {fontFamily, fontSize: Number(fontSize), boldFlag: boldFlag === '1', italicFlag: italicFlag === '1'};
     });
     const remarkSectionText = getSectionText(wtt, '凡例', '種別');
     const remarks = remarkSectionText.match(/Remark[01]=[0-9]+,[0-9]+,[0-9]+,[0-9A-F]+,(.|\n(?=\t))+/g) || [];

@@ -132,6 +132,19 @@ describe(
           {boldFlag: false, italicFlag: false, fontSize: 14, fontFamily: 'ＭＳ ゴシック'},
           'Converted remark font settings is wrong.'
         );
+        const hourActualConfig = wdtt2.timetable.header.hourFontStyle;
+        assert.deepStrictEqual(
+          hourActualConfig,
+          {boldFlag: false, italicFlag: true, fontSize: 24, fontFamily: 'Noto Mono'},
+          'Converted hour font settings is wrong.'
+        );
+        const cellActualConfig = Object.assign({}, wdtt2.timetable.cell.time);
+        delete cellActualConfig.x;
+        delete cellActualConfig.y;
+        assert.deepStrictEqual(
+          cellActualConfig as fontStyle,
+          {boldFlag: true, italicFlag: false, fontSize: 20, fontFamily: '游ゴシック'}
+        )
       }
     )
   }
