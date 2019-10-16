@@ -56,8 +56,8 @@ describe(
           content: expectInboundRemarkContent,
         }
 
-        assert.deepStrictEqual(wdtt2.remarks.texts[0].content, remarkTextExpect, 'Converted data is wrong data.');
-        assert.deepStrictEqual(wdtt2.remarks.texts[wdtt2.remarks.texts.length - 1], expectInboundRemark);
+        assert.deepStrictEqual(wdtt2.remark.texts[0].content, remarkTextExpect, 'Converted data is wrong data.');
+        assert.deepStrictEqual(wdtt2.remark.texts[wdtt2.remark.texts.length - 1], expectInboundRemark);
       }
     )
 
@@ -122,20 +122,20 @@ describe(
         delete mainTitleActualConfig.text;
         assert.deepStrictEqual(
           mainTitleActualConfig as fontStyle,
-          {boldFlag: true, italicFlag: true, fontSize: 22, fontFamily: '游ゴシック'},
+          {isBold: true, isItalic: true, fontSize: 22, fontFamily: '游ゴシック'},
           'Converted main title font settings is wrong.'
         );
-        const remarkActualConfig = Object.assign({}, wdtt2.remarks);
+        const remarkActualConfig = Object.assign({}, wdtt2.remark);
         delete remarkActualConfig.texts;
         assert.deepStrictEqual(
           remarkActualConfig as fontStyle,
-          {boldFlag: false, italicFlag: false, fontSize: 14, fontFamily: 'ＭＳ ゴシック'},
+          {isBold: false, isItalic: false, fontSize: 14, fontFamily: 'ＭＳ ゴシック'},
           'Converted remark font settings is wrong.'
         );
         const hourActualConfig = wdtt2.timetable.header.hourFontStyle;
         assert.deepStrictEqual(
           hourActualConfig,
-          {boldFlag: false, italicFlag: true, fontSize: 24, fontFamily: 'Noto Mono'},
+          {isBold: false, isItalic: true, fontSize: 24, fontFamily: 'Noto Mono'},
           'Converted hour font settings is wrong.'
         );
         const cellActualConfig = Object.assign({}, wdtt2.timetable.cell.time);
@@ -143,7 +143,7 @@ describe(
         delete cellActualConfig.y;
         assert.deepStrictEqual(
           cellActualConfig as fontStyle,
-          {boldFlag: true, italicFlag: false, fontSize: 20, fontFamily: '游ゴシック'}
+          {isBold: true, isItalic: false, fontSize: 20, fontFamily: '游ゴシック'}
         )
       }
     )

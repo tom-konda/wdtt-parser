@@ -18,10 +18,10 @@ const wdttParse = (() => {
     const [timetableTitleText, timetableValidDate, timetableSupervisor, timetableOutboundTitle, timetableInboundTitle, timetableStyle, cellStyle, colorStyle, ...fontStyle] = getSectionText(wtt, '表示', '凡例').split('\n');
     const [timetableOrientation, trainsPerHour] = timetableStyle.split(',').map(Number);
     const [cellWidth, cellHeight, cellTimePosX, cellTimePosY, cellTrainServicePosX, cellTrainServicePosY, destinationPosX, destinationPosY, trainServiceDisplayFlag, destinationDisplayFlag] = cellStyle.split(',').map(Number);
-    const [titleColor, weekdayColor, weekdayBackGround, saturdayColor, saturdayBackground, holidayColor, holidayBackground] = colorStyle.split(',');
+    const [titleColor, weekdayColor, weekdayBackground, saturdayColor, saturdayBackground, holidayColor, holidayBackground] = colorStyle.split(',');
     const [titleFontStyle, subtitleFontStyle, headerDirectionFontStyle, headerHourFontStyle, cellTimeFontStyle, cellTrainServiceFontStyle, cellTrainDestinationFontStyle, remarkFontStyle] = fontStyle.map(styles => {
-      const [fontFamily, fontSize, boldFlag, italicFlag] = styles.split(',');
-      return {fontFamily, fontSize: Number(fontSize), boldFlag: boldFlag === '1', italicFlag: italicFlag === '1'};
+      const [fontFamily, fontSize, isBold, isItalic] = styles.split(',');
+      return {fontFamily, fontSize: Number(fontSize), isBold: isBold === '1', isItalic: isItalic === '1'};
     });
     const remarkSectionText = getSectionText(wtt, '凡例', '種別');
     const remarks = remarkSectionText.match(/Remark[01]=[0-9]+,[0-9]+,[0-9]+,[0-9A-F]+,(.|\n(?=\t))+/g) || [];
@@ -67,7 +67,7 @@ const wdttParse = (() => {
 
     return {
       title,
-      remarks : {
+      remark : {
         ...remarkFontStyle,
         ...{
           texts: remarkTexts,
@@ -100,7 +100,7 @@ const wdttParse = (() => {
           directionFontStyle: headerDirectionFontStyle,
           hourFontStyle: headerHourFontStyle,
           weekdayColor: `#${weekdayColor}`,
-          weekdayBackGround: `#${weekdayBackGround}`,
+          weekdayBackground: `#${weekdayBackground}`,
           saturdayColor: `#${saturdayColor}`,
           saturdayBackground: `#${saturdayBackground}`,
           holidayColor: `#${holidayColor}`,

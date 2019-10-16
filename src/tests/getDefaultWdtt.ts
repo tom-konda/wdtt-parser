@@ -86,10 +86,10 @@ export const getDefaultWdtt = () => {
   ];
 
   const defaultRemarkStyle = {
-    boldFlag: false,
+    isBold: false,
     fontFamily: 'ＭＳ ゴシック',
     fontSize: 10,
-    italicFlag: false,
+    isItalic: false,
   };
   const defaultSubtitleStyle = defaultRemarkStyle;
   const defaultSubtitles = {
@@ -102,7 +102,7 @@ export const getDefaultWdtt = () => {
       ],
     }
   };
-  const defaultRemarks = {
+  const defaultRemark = {
     ...{},
     ...defaultRemarkStyle,
     ...{
@@ -113,29 +113,29 @@ export const getDefaultWdtt = () => {
   const defaultTimetable = {
     cell: {
       destination: {
-        boldFlag: false,
+        isBold: false,
         display: true,
         fontFamily: 'ＭＳ ゴシック',
         fontSize: 10,
-        italicFlag: false,
+        isItalic: false,
         x: 20,
         y: 16,
       },
       height: 32,
       service: {
-        boldFlag: false,
+        isBold: false,
         display: true,
         fontFamily: 'ＭＳ ゴシック',
         fontSize: 8,
-        italicFlag: false,
+        isItalic: false,
         x: 2,
         y: 2,
       },
       time: {
-        boldFlag: false,
+        isBold: false,
         fontFamily: 'ＭＳ ゴシック',
         fontSize: 15,
-        italicFlag: false,
+        isItalic: false,
         x: 2,
         y: 12,
       },
@@ -143,34 +143,34 @@ export const getDefaultWdtt = () => {
     },
     header: {
       directionFontStyle: {
-        boldFlag: false,
+        isBold: false,
         fontFamily: 'ＭＳ ゴシック',
         fontSize: 14,
-        italicFlag: false,
+        isItalic: false,
       },
       holidayBackground: '#FF0000',
       holidayColor: '#FFFFFF',
       hourFontStyle: {
-        boldFlag: false,
+        isBold: false,
         fontFamily: 'ＭＳ ゴシック',
         fontSize: 18,
-        italicFlag: false,
+        isItalic: false,
       },
       inboundTitle: '上り（＊＊方面）',
       outboundTitle: '下り（＊＊方面）',
       saturdayBackground: '#0000FF',
       saturdayColor: '#FFFFFF',
-      weekdayBackGround: '#000080',
+      weekdayBackground: '#000080',
       weekdayColor: '#FFFFFF',
     },
     orientation: 0,
     title: {
       color: '#000000',
       mainTitle: {
-        boldFlag: false,
+        isBold: false,
         fontFamily: 'ＭＳ ゴシック',
         fontSize: 16,
-        italicFlag: false,
+        isItalic: false,
         text: '＊＊駅列車標準時刻表',
       },      
       subtitles: defaultSubtitles,
@@ -185,6 +185,6 @@ export const getDefaultWdtt = () => {
     timetable: defaultTimetable,
     outboundTrains: [],
     inboundTrains: [],
-    remarks: defaultRemarks
+    remark: defaultRemark
   }
 }

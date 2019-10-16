@@ -5,8 +5,8 @@ declare module '@tom-konda/wdtt-parser' {
 type fontStyle = {
   fontFamily: string,
   fontSize: number,
-  italicFlag: boolean,
-  boldFlag: boolean,
+  isItalic: boolean,
+  isBold: boolean,
 }
 
 type fontStyleMergedType<T> = fontStyle & T;
@@ -24,7 +24,7 @@ type remarkText = {
   content: string,
 }
 
-type remarks = fontStyleMergedType<{
+type remark = fontStyleMergedType<{
   texts: remarkText[],
 }>
 
@@ -60,7 +60,7 @@ type timetable = {
     directionFontStyle: fontStyle,
     hourFontStyle: fontStyle,
     weekdayColor: string,
-    weekdayBackGround: string,
+    weekdayBackground: string,
     saturdayColor: string,
     saturdayBackground: string,
     holidayColor: string,
@@ -92,7 +92,7 @@ type trainData = {
 
 type wdttDefaultJSON = {
   title : string,
-  remarks: remarks,
+  remark: remark,
   timetable: timetable,
   trainService: trainService[],
   destinations: destination[],
