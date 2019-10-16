@@ -9,6 +9,45 @@
 
 * 最新の LTS
 
+## 使用方法
+
+### ブラウザ (ES Modules)
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="module">
+    import wdttParse from './wdtt-parser.js';
+
+    fetch('./test.wdtt')
+    .then(
+      (result) => {
+        return result.text();
+      }
+    ).then(
+      (wdttText) => {
+        const wdtt = wdttParse(wdttText);
+      }
+    );
+  </script>
+</head>
+</html>
+```
+
+#### Node.js
+
+```js
+const wdttParse = require('@tom-konda/wdtt-parse');
+
+const file = fs.readFileSync(`PATH_TO_WDTTFILE/test.wdtt`);
+
+// Convert from buffer to string
+const wdttText = file.toString();
+const wdtt = wdttParse(wdttText);
+```
+
+
 ## ライセンス
 ライセンスは MIT になります。
 
