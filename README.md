@@ -11,6 +11,9 @@
 
 ## 使用方法
 
+WDTT 形式のファイルは Shift_JIS でエンコードされているため、
+事前に UTF-8 に文字コードを変換するか、JavaScript のコード内で UTF-8 のテキストに変換する必要があります。
+
 ### ブラウザ (ES Modules)
 
 ```html
@@ -20,14 +23,18 @@
   <script type="module">
     import wdttParse from './wdtt-parser.js';
 
-    fetch('./test.wdtt')
+    fetch('./test.wtt')
     .then(
       (result) => {
-        return result.text();
+        return result.arrayBuffer();
       }
     ).then(
-      (wdttText) => {
+      (buffer) => {
+        // Convert from buffer to utf8 string.
+        const sjisDecoder = new TextDecoder('shift_jis');
+        const wdttText = sjisDecoder.decode(buffer);
         const wdtt = wdttParse(wdttText);
+        console.log(wdtt);
       }
     );
   </script>
@@ -38,13 +45,16 @@
 #### Node.js
 
 ```js
-const wdttParse = require('@tom-konda/wdtt-parse');
+const wdttParse = require('@tom-konda/wdtt-parser');
+const iconvLite = require('iconv-lite');
+const fs = require('fs');
 
-const file = fs.readFileSync(`PATH_TO_WDTTFILE/test.wdtt`);
+const file = fs.readFileSync(`PATH_TO_WDTTFILE/test.wtt`);
 
-// Convert from buffer to string
-const wdttText = file.toString();
+// Convert from buffer to utf8 string.
+const wdttText = iconvLite.decode(file, 'SHIFT_JIS');
 const wdtt = wdttParse(wdttText);
+console.log(wdtt);
 ```
 
 
