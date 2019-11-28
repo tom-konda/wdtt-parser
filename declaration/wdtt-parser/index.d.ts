@@ -1,5 +1,5 @@
 declare module '@tom-konda/wdtt-parser' {
-  export default function (wdtt: string) : wdttDefaultJSON
+  export const wdttParse: (wdtt: string) => wdttDefaultJSON
 }
 
 type fontStyle = {

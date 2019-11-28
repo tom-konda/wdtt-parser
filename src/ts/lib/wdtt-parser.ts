@@ -1,4 +1,4 @@
-const wdttParse = (() => {
+export const wdttParse = (() => {
   const getSectionText = (str = '', start:string, end = '') => {
     let regexp: RegExp;
     if (end.length) {
@@ -141,5 +141,3 @@ const wdttParse = (() => {
     };
   }
 })();
-
-export default wdttParse;
