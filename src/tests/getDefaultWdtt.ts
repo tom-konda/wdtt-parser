@@ -102,7 +102,7 @@ export const getDefaultWdtt = () => {
       ],
     }
   };
-  const defaultRemark = {
+  const defaultRemarks = {
     ...{},
     ...defaultRemarkStyle,
     ...{
@@ -181,10 +181,10 @@ export const getDefaultWdtt = () => {
   return {
     title: '無題',
     destinations: defaultDestinationData,
-    trainService: defaultTrainService,
+    trainServices: defaultTrainService,
     timetable: defaultTimetable,
     outboundTrains: [],
     inboundTrains: [],
-    remark: defaultRemark
+    remarks: defaultRemarks
   }
 }

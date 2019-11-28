@@ -92,9 +92,9 @@ type trainData = {
 
 type wdttDefaultJSON = {
   title : string,
-  remark: remark,
+  remarks: remark,
   timetable: timetable,
-  trainService: trainService[],
+  trainServices: trainService[],
   destinations: destination[],
   inboundTrains: trainData[],
   outboundTrains: trainData[],

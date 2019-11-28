@@ -37,7 +37,7 @@ const wdttParse = (() => {
       }
     });
 
-    const trainService:trainService[] = getSectionText(wtt, '種別', '行先').split('\n').map((value) => {
+    const trainServices:trainService[] = getSectionText(wtt, '種別', '行先').split('\n').map((value) => {
       const [, trainServiceData] = value.split('=');
       const [serviceType, serviceAbbr, timetableColorText] = trainServiceData.split(',');
       return {serviceType, serviceAbbr, timetableColor : `#${timetableColorText}`};
@@ -67,7 +67,7 @@ const wdttParse = (() => {
 
     return {
       title,
-      remark : {
+      remarks : {
         ...remarkFontStyle,
         ...{
           texts: remarkTexts,
@@ -134,7 +134,7 @@ const wdttParse = (() => {
           },
         },
       },
-      trainService,
+      trainServices,
       destinations,
       outboundTrains,
       inboundTrains,

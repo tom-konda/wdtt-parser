@@ -1,5 +1,5 @@
 'use strict';
-import wdttParse from '../ts/lib/wdtt-parser';
+import {wdttParse} from '../ts/lib/wdtt-parser';
 import fs = require('fs');
 import assert = require('assert');
 import * as iconvLite from 'iconv-lite';
@@ -56,8 +56,8 @@ describe(
           content: expectInboundRemarkContent,
         }
 
-        assert.deepStrictEqual(wdtt2.remark.texts[0].content, remarkTextExpect, 'Converted data is wrong data.');
-        assert.deepStrictEqual(wdtt2.remark.texts[wdtt2.remark.texts.length - 1], expectInboundRemark);
+        assert.deepStrictEqual(wdtt2.remarks.texts[0].content, remarkTextExpect, 'Converted data is wrong data.');
+        assert.deepStrictEqual(wdtt2.remarks.texts[wdtt2.remarks.texts.length - 1], expectInboundRemark);
       }
     )
 
@@ -125,7 +125,7 @@ describe(
           {isBold: true, isItalic: true, fontSize: 22, fontFamily: '游ゴシック'},
           'Converted main title font settings is wrong.'
         );
-        const remarkActualConfig = Object.assign({}, wdtt2.remark);
+        const remarkActualConfig = Object.assign({}, wdtt2.remarks);
         delete remarkActualConfig.texts;
         assert.deepStrictEqual(
           remarkActualConfig as fontStyle,
