@@ -24,7 +24,7 @@ type remarkText = {
   content: string,
 }
 
-type remark = fontStyleMergedType<{
+type remarks = fontStyleMergedType<{
   texts: remarkText[],
 }>
 
@@ -92,7 +92,7 @@ type trainData = {
 
 type wdttDefaultJSON = {
   title : string,
-  remarks: remark,
+  remarks: remarks,
   timetable: timetable,
   trainServices: trainService[],
   destinations: destination[],
