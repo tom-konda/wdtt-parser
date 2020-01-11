@@ -164,7 +164,7 @@ export const getDefaultWdtt = () => {
       weekdayColor: '#FFFFFF',
     },
     orientation: 0,
-    title: {
+    titles: {
       color: '#000000',
       mainTitle: {
         isBold: false,

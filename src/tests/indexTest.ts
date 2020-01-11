@@ -71,7 +71,7 @@ describe(
           trainServiceNumber: null,
           departureTime: '540',
           destination: 1,
-          operationDatePattern: 9,
+          operationDate: 9,
         }
         assert.deepStrictEqual(wdtt2.outboundTrains[0], expectedFirstOutboundTrain, 'Converted outbound train is wrong data.');
         
@@ -82,7 +82,7 @@ describe(
           trainServiceNumber: null,
           departureTime: '020',
           destination: 0,
-          operationDatePattern: 4,
+          operationDate: 4,
         }
         assert.deepStrictEqual(wdtt2.outboundTrains[wdtt2.outboundTrains.length - 1], expectedLastOutboundTrain, 'Converted outbound train is wrong data.');
       }
@@ -98,7 +98,7 @@ describe(
           trainServiceNumber: null,
           departureTime: '2359',
           destination: 0,
-          operationDatePattern: 0,
+          operationDate: 0,
         }
         assert.deepStrictEqual(wdtt2.inboundTrains[wdtt2.inboundTrains.length - 1], expectedLastInboundTrain, 'Converted inbound train is wrong data.');
 
@@ -109,7 +109,7 @@ describe(
           trainServiceNumber: 1,
           departureTime: '638',
           destination: 3,
-          operationDatePattern: 2,
+          operationDate: 2,
         }
         assert.deepStrictEqual(wdtt2.inboundTrains[3], expectedNamedInboundTrain);
       }
@@ -118,7 +118,7 @@ describe(
     it(
       'Check font settings.',
       () => {
-        const mainTitleActualConfig = wdtt2.timetable.title.mainTitle;
+        const mainTitleActualConfig = wdtt2.timetable.titles.mainTitle;
         delete mainTitleActualConfig.text;
         assert.deepStrictEqual(
           mainTitleActualConfig as fontStyle,

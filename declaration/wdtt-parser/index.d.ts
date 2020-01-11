@@ -47,7 +47,7 @@ type cell = {
 type timetable = {
   orientation: number,
   trainsPerHour: number,
-  title: {
+  titles: {
     color: string,
     mainTitle: fontStyleMergedType<{
       text: string,
@@ -87,7 +87,7 @@ type trainData = {
   trainServiceNumber: number | null,
   departureTime: string,
   destination: number,
-  operationDatePattern: number,
+  operationDate: number,
 }
 
 type wdttDefaultJSON = {

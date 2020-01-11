@@ -49,14 +49,14 @@ export const wdttParse = (() => {
     });
 
     const getTrainData = (trainText:string) => {
-      const [serviceType, trainID, trainServiceName, trainServiceNumber, departureTime, destination, operationDatePattern] = trainText.split(',');
+      const [serviceType, trainID, trainServiceName, trainServiceNumber, departureTime, destination, operationDate] = trainText.split(',');
       return {
         serviceType: Number(serviceType),
         trainID, trainServiceName,
         trainServiceNumber: trainServiceNumber === '' ? null : Number(trainServiceNumber),
         departureTime,
         destination: Number(destination),
-        operationDatePattern: Number(operationDatePattern)
+        operationDate: Number(operationDate)
       };
     };
 
@@ -76,7 +76,7 @@ export const wdttParse = (() => {
       timetable: {
         orientation: timetableOrientation,
         trainsPerHour,
-        title: {
+        titles: {
           color: `#${titleColor}`,
           mainTitle: {
             ...titleFontStyle,
