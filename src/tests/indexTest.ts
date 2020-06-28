@@ -1,15 +1,15 @@
 'use strict';
 import {wdttParse} from '../ts/lib/wdtt-parser';
-import fs = require('fs');
+import { readFileSync } from 'fs';
 import assert = require('assert');
-import * as iconvLite from 'iconv-lite';
+import { decode } from 'iconv-lite';
 import {getDefaultWdtt} from './getDefaultWdtt';
 
 describe(
   'Minimum WDTT tests.',
    () => {
-    const file = fs.readFileSync(`${__dirname}/fixtures/test.wtt`);
-    const wdtt = wdttParse(iconvLite.decode(file, 'SHIFT_JIS'));
+    const file = readFileSync(`${__dirname}/fixtures/test.wtt`);
+    const wdtt = wdttParse(decode(file, 'SHIFT_JIS'));
 
     const minimumData = getDefaultWdtt();
 
@@ -28,8 +28,8 @@ describe(
     let wdtt2: wdttDefaultJSON;
     before(
       () => {
-        const file = fs.readFileSync(`${__dirname}/fixtures/test2.wtt`);
-        wdtt2 = wdttParse(iconvLite.decode(file, 'SHIFT_JIS'));
+        const file = readFileSync(`${__dirname}/fixtures/test2.wtt`);
+        wdtt2 = wdttParse(decode(file, 'SHIFT_JIS'));
       }
     );
 
