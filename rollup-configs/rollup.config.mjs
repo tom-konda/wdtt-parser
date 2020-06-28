@@ -1,6 +1,6 @@
-import * as fs from 'fs';
+import {readFileSync} from 'fs';
 
-const packageInfo = JSON.parse(fs.readFileSync(`${__dirname}/../package.json`).toString())
+const packageInfo = JSON.parse(readFileSync(`${__dirname}/../package.json`).toString())
 const bannerText = `
 /**
  * WDTT parser ver ${packageInfo.version}
