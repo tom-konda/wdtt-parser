@@ -9,7 +9,7 @@ export const wdttParse = (() => {
     }
     const match = str.match(regexp)
     return match === null ? '' : match[1].trim();
-  
+
   }
 
   return (wtt = '') : wdttDefaultJSON => {
@@ -25,7 +25,7 @@ export const wdttParse = (() => {
     });
     const remarkSectionText = getSectionText(wtt, '凡例', '種別');
     const remarks = remarkSectionText.match(/Remark[01]=[0-9]+,[0-9]+,[0-9]+,[0-9A-F]+,(.|\n(?=\t))+/g) || [];
-    
+
     const remarkTexts:remarkText[] = remarks.map((remarkRow) => {
       const [,isInbound, xPos, yPos, isVertical, textColor, content] = remarkRow.match(/Remark([01])=([0-9]+),([0-9]+),([0-9]+),([0-9A-F]+),([\S\s]+)/) as RegExpMatchArray;
       return {

@@ -1,5 +1,5 @@
-export const getDefaultWdtt = () => {
-  let defaultDestinationData = [{
+export const getDefaultWdtt = (): wdttDefaultJSON => {
+  const defaultDestinationData = [{
     destination: '当駅止まり',
     displayText: '止',
   }];
@@ -172,7 +172,7 @@ export const getDefaultWdtt = () => {
         fontSize: 16,
         isItalic: false,
         text: '＊＊駅列車標準時刻表',
-      },      
+      },
       subtitles: defaultSubtitles,
     },
     trainsPerHour: 8,

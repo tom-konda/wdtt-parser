@@ -7,7 +7,7 @@ import {getDefaultWdtt} from './getDefaultWdtt';
 
 describe(
   'Minimum WDTT tests.',
-   () => {
+  () => {
     const file = readFileSync(`${__dirname}/fixtures/test.wtt`);
     const wdtt = wdttParse(decode(file, 'SHIFT_JIS'));
 
@@ -37,6 +37,7 @@ describe(
       'Check remark.',
       () => {
 
+        /*eslint no-irregular-whitespace: ['error', { 'skipTemplates': true }]*/
         const remarkTextExpect =
 `テスト凡例
 　,
@@ -74,7 +75,7 @@ describe(
           operationDate: 9,
         }
         assert.deepStrictEqual(wdtt2.outboundTrains[0], expectedFirstOutboundTrain, 'Converted outbound train is wrong data.');
-        
+
         const expectedLastOutboundTrain: trainData = {
           serviceType: 0,
           trainID: '111',
