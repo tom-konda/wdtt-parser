@@ -18,12 +18,17 @@
     "doc-gen": "typedoc --name WDTTParser --excludeExternals --target es2015 --module es2015 --includeDeclarations --out ./doc ./declaration/wdtt-parser/index.d.ts",
     "rollup:lib-banner": "rollup -c ./rollup-configs/rollup.config.mjs",
     "rollup:trans-node": "rollup -c ./rollup-configs/rollup.config.cjs.mjs",
+    "lint": "eslint src/**/*.ts",
+    "lint:declaration": "eslint declaration/**/*.d.ts",
     "test": "cross-env TS_NODE_PROJECT=src/tests/tsconfig.json mocha --require espower-typescript/guess src/tests/**.ts"
   },
   "devDependencies": {
     "@types/mocha": "^7.0.2",
     "@types/node": "^12.12.47",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
     "cross-env": "^7.0.2",
+    "eslint": "^7.3.1",
     "espower-typescript": "^9.0.2",
     "iconv-lite": "^0.6.1",
     "mocha": "^7.2.0",
