@@ -5,7 +5,7 @@
   "author": "Tom Konda",
   "license": "MIT",
   "directories": {
-    "test": "src/tests/"
+    "test": "tests/"
   },
   "types": "./declaration/wdtt-parser/index.d.ts",
   "scripts": {
@@ -21,7 +21,7 @@
     "lint": "npm-run-all lint:*",
     "lint:src": "eslint src/**/*.ts",
     "lint:declaration": "eslint declaration/**/*.d.ts",
-    "test": "cross-env TS_NODE_PROJECT=src/tests/tsconfig.json mocha --require espower-typescript/guess src/tests/**.ts"
+    "test": "cross-env TS_NODE_PROJECT=tests/tsconfig.json mocha --require espower-typescript/guess tests/**.ts"
   },
   "devDependencies": {
     "@types/mocha": "^8.0.0",

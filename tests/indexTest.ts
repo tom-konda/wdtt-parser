@@ -1,5 +1,5 @@
 'use strict';
-import {wdttParse} from '../ts/lib/wdtt-parser';
+import {wdttParse} from '../src/ts/lib/wdtt-parser';
 import { readFileSync } from 'fs';
 import assert = require('assert');
 import { decode } from 'iconv-lite';
@@ -119,14 +119,14 @@ describe(
     it(
       'Check font settings.',
       () => {
-        const mainTitleActualConfig = wdtt2.timetable.titles.mainTitle;
+        const mainTitleActualConfig = wdtt2.timetable.titles.mainTitle as Partial<fontStyleMergedType<{text: string;}>>;
         delete mainTitleActualConfig.text;
         assert.deepStrictEqual(
           mainTitleActualConfig as fontStyle,
           {isBold: true, isItalic: true, fontSize: 22, fontFamily: '游ゴシック'},
           'Converted main title font settings is wrong.'
         );
-        const remarkActualConfig = Object.assign({}, wdtt2.remarks);
+        const remarkActualConfig = Object.assign({}, wdtt2.remarks) as Partial<fontStyleMergedType<{texts: remarkText[];}>>;
         delete remarkActualConfig.texts;
         assert.deepStrictEqual(
           remarkActualConfig as fontStyle,
@@ -139,7 +139,7 @@ describe(
           {isBold: false, isItalic: true, fontSize: 24, fontFamily: 'Noto Mono'},
           'Converted hour font settings is wrong.'
         );
-        const cellActualConfig = Object.assign({}, wdtt2.timetable.cell.time);
+        const cellActualConfig = Object.assign({}, wdtt2.timetable.cell.time) as Partial<fontStyleMergedType<coordinate>>;
         delete cellActualConfig.x;
         delete cellActualConfig.y;
         assert.deepStrictEqual(
