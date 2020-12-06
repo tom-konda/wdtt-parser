@@ -1,5 +1,8 @@
-import {readFileSync} from 'fs';
+import { readFileSync } from 'fs';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const packageInfo = JSON.parse(readFileSync(`${__dirname}/../package.json`).toString())
 const bannerText = `
 /**
