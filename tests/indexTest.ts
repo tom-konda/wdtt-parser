@@ -150,3 +150,26 @@ describe(
     )
   }
 );
+
+describe(
+  'Version 1.05 WDTT tests.',
+  () => {
+    it(
+      'Check minimum wdtt file',
+      () => {
+        const file = readFileSync(`${__dirname}/fixtures/test_v105.wtt`);
+        const wdtt = wdttParse(decode(file, 'SHIFT_JIS'));
+        assert.deepStrictEqual(wdtt.title, '無題', 'Converted data is wrong data.');
+      }
+    );
+
+    it(
+      'Check wdtt file',
+      () => {
+        const file = readFileSync(`${__dirname}/fixtures/test2_v105.wtt`);
+        const wdtt = wdttParse(decode(file, 'SHIFT_JIS'));
+        assert.deepStrictEqual(wdtt.destinations[60].displayText, '還暦', 'Converted data is wrong data.');
+      }
+    );
+  }
+);

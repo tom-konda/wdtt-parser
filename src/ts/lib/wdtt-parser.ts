@@ -14,7 +14,9 @@ export const wdttParse = (() => {
 
   return (wtt = '') : wdttDefaultJSON => {
     wtt = wtt.replace(/\r/g, '');
-    const title = getSectionText(wtt, 'WinDIATimeTable', '表示');
+    const titleSection = getSectionText(wtt, 'WinDIATimeTable', '表示').trim().split('\n');
+    const title = titleSection.pop() ?? '';
+
     const [timetableTitleText, timetableValidDate, timetableSupervisor, timetableOutboundTitle, timetableInboundTitle, timetableStyle, cellStyle, colorStyle, ...fontStyle] = getSectionText(wtt, '表示', '凡例').split('\n');
     const [timetableOrientation, trainsPerHour] = timetableStyle.split(',').map(Number);
     const [cellWidth, cellHeight, cellTimePosX, cellTimePosY, cellTrainServicePosX, cellTrainServicePosY, destinationPosX, destinationPosY, trainServiceDisplayFlag, destinationDisplayFlag] = cellStyle.split(',').map(Number);
