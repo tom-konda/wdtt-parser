@@ -16,13 +16,14 @@
   },
   "types": "./declaration/wdtt-parser/index.d.ts",
   "scripts": {
+    "prepublishOnly": "npm run build",
     "prebuild": "npm-run-all clean:*",
     "build": "npm-run-all lint test --parallel ts:build-* --serial rollup:*-banner rollup:trans-*",
     "postbuild": "npm-run-all clean:temp doc-gen",
     "ts:build-lib": "tsc -p ./src/ts/lib",
     "clean:build": "node -e \"require('shelljs').rm('-R', ['./lib', './doc']);\"",
     "clean:temp": "node -e \"require('shelljs').rm('-R', ['./temp']);\"",
-    "doc-gen": "typedoc --name WDTTParser --excludeExternals --target es2015 --module es2015 --includeDeclarations --out ./doc ./declaration/wdtt-parser/index.d.ts",
+    "doc-gen": "typedoc --excludeExternals",
     "rollup:lib-banner": "rollup -c ./rollup-configs/rollup.config.mjs",
     "rollup:trans-node": "rollup -c ./rollup-configs/rollup.config.cjs.mjs",
     "lint": "npm-run-all lint:*",
@@ -44,7 +45,7 @@
     "power-assert": "^1.6.1",
     "rollup": "^2.35.1",
     "shelljs": "^0.8.4",
-    "typedoc": "^0.19.2",
+    "typedoc": "^0.20.28",
     "typescript": "^4.1.3"
   }
 }

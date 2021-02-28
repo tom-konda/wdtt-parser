@@ -1,0 +1,9 @@
+{
+  "name": "WDTTParser",
+  "readme": "./README.md",
+  "tsconfig": "./src/ts/lib",
+  "entryPoints": [
+    "./declaration/wdtt-parser/index.d.ts"
+  ],
+  "out": "./doc"
+}
