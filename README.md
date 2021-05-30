@@ -1,6 +1,11 @@
 ## これは何？
 駅時刻表の作成ソフト [WinDIATimetable](http://dandp.halfmoon.jp/soft/wdtt.html) で出力される、WDTT 形式のファイルを解析して JavaScript オブジェクトに変換できるパーサです。
 
+## 将来の予定（v3.0.x）
+- CommonJS 形式での出力の廃止
+  - ES Module のみサポートに変更
+- テストフレームワークの Jest への切り替え
+
 ## 対応ブラウザ
 - ES 2015+ に対応しているブラウザ
 
