@@ -1,11 +1,11 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "target": "es2018",
-    "module": "commonjs",
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "lib": [
-      "es2015",
-      "es2018"
+      "ES2020"
     ],
     "typeRoots": [
       "../node_modules/@types",
