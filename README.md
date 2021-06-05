@@ -49,15 +49,12 @@ WDTT 形式のファイルは Shift_JIS でエンコードされているため�
 #### Node.js
 
 ```js
-const wdttParse = require('@tom-konda/wdtt-parser');
-const iconvLite = require('iconv-lite');
-const fs = require('fs');
+import { wdttParse } from './wdtt-parser.mjs';
+import {readFileSync} from 'fs';
 
-const file = fs.readFileSync(`PATH_TO_WDTTFILE/test.wtt`);
-
-// Convert from buffer to utf8 string.
-const wdttText = iconvLite.decode(file, 'SHIFT_JIS');
-const wdtt = wdttParse(wdttText);
+// A wtt file was converted to UTF-8 text already.
+const file = readFileSync(`./lib/test.wtt`);
+const wdtt = wdttParse(file.toString());
 console.log(wdtt);
 ```
 
