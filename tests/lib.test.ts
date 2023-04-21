@@ -3,6 +3,7 @@ import {wdttParse} from '../src/ts/lib/wdtt-parser';
 import { readFileSync } from 'fs';
 import { decode } from 'iconv-lite';
 import {getDefaultWdtt} from './getDefaultWdtt';
+import { describe, it, expect, beforeEach } from 'vitest';
 
 describe(
   'Minimum WDTT tests.',
