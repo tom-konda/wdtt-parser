@@ -7,29 +7,29 @@ jobs:
     runs-on: ubuntu-latest
     name: Linux test
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2-beta
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
-        node-version: '14'
+        node-version: '18'
     - run: yarn install
     - run: yarn build
   mac_test_job:
     runs-on: macos-latest
     name: macOS test
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2-beta
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
-        node-version: '14'
+        node-version: '18'
     - run: yarn install
     - run: yarn build
   win_test_job:
     runs-on: windows-latest
     name: Windows test
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2-beta
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
-        node-version: '14'
+        node-version: '18'
     - run: yarn install
     - run: yarn build
