@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
       "module": "esnext",
-      "moduleResolution": "node",
-      "target": "es2018",
+      "esModuleInterop": true,
+      "target": "es2022",
       "lib": [
-        "es2015",
-        "es2018"
+        "es2022"
       ],
       "typeRoots": [
         "node_modules/@types",
@@ -13,7 +12,6 @@
       ],
       "strict": true,
       "sourceMap": false,
-      "outDir": "../../../temp/lib"
   },
   "extends": "../../../tsconfig.json"
 }
