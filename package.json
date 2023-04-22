@@ -3,7 +3,7 @@
   "author": "Tom Konda",
   "license": "MIT",
   "engines": {
-    "node": ">=14.15.0"
+    "node": ">=18.12.0"
   },
   "repository": {
     "type": "git",
@@ -17,17 +17,16 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "prebuild": "npm-run-all clean:*",
-    "build": "npm-run-all lint test --parallel ts:build-* --serial rollup:*-banner",
-    "postbuild": "npm-run-all clean:temp doc-gen",
-    "ts:build-lib": "tsc -p ./src/ts/lib",
+    "build": "npm-run-all lint test --parallel ts:build-*",
+    "postbuild": "npm run doc-gen",
+    "ts:build-lib": "vite build -c ./vite-configs/vite.config.js ./src/ts/lib",
     "clean:build": "node -e \"require('shelljs').rm('-R', ['./lib', './doc']);\"",
-    "clean:temp": "node -e \"require('shelljs').rm('-R', ['./temp']);\"",
     "doc-gen": "typedoc --excludeExternals",
-    "rollup:lib-banner": "rollup -c ./rollup-configs/rollup.config.mjs",
     "lint": "npm-run-all lint:*",
     "lint:src": "eslint src/**/*.ts",
     "lint:declaration": "eslint declaration/**/*.d.ts",
-    "test": "jest --config ./jest.config.mjs ./tests"
+    "lint:tsc-lib": "tsc --noEmit -p ./src/ts/lib",
+    "test": "vitest run --dir ./tests"
   },
   "devDependencies": {
     "@types/node": "^18",
