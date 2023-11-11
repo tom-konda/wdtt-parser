@@ -1,7 +1,7 @@
 name: "Build tests"
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 jobs:
   linux_test_job:
     runs-on: ubuntu-latest
