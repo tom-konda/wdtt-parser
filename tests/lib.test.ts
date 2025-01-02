@@ -1,15 +1,16 @@
 'use strict';
 import {wdttParse} from '../src/ts/lib/wdtt-parser';
 import { readFileSync } from 'fs';
-import { decode } from 'iconv-lite';
+import { TextDecoder } from 'node:util';
 import {getDefaultWdtt} from './getDefaultWdtt';
 import { describe, it, expect, beforeEach } from 'vitest';
+const decoder = new TextDecoder('shift_jis');
 
 describe(
   'Minimum WDTT tests.',
   () => {
     const file = readFileSync(`${__dirname}/fixtures/test.wtt`);
-    const wdtt = wdttParse(decode(file, 'SHIFT_JIS'));
+    const wdtt = wdttParse(decoder.decode(file));
 
     const minimumData = getDefaultWdtt();
 
@@ -29,7 +30,7 @@ describe(
     beforeEach(
       () => {
         const file = readFileSync(`${__dirname}/fixtures/test2.wtt`);
-        wdtt2 = wdttParse(decode(file, 'SHIFT_JIS'));
+        wdtt2 = wdttParse(decoder.decode(file));
       }
     );
 
@@ -143,7 +144,7 @@ describe(
       'Check minimum wdtt file',
       () => {
         const file = readFileSync(`${__dirname}/fixtures/test_v105.wtt`);
-        const wdtt = wdttParse(decode(file, 'SHIFT_JIS'));
+        const wdtt = wdttParse(decoder.decode(file));
         expect(wdtt.title).toStrictEqual('無題');
       }
     );
@@ -152,7 +153,7 @@ describe(
       'Check wdtt file',
       () => {
         const file = readFileSync(`${__dirname}/fixtures/test2_v105.wtt`);
-        const wdtt = wdttParse(decode(file, 'SHIFT_JIS'));
+        const wdtt = wdttParse(decoder.decode(file));
         expect(wdtt.destinations[60].displayText).toStrictEqual('還暦');
       }
     );
