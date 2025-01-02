@@ -1,35 +1,50 @@
 name: "Build tests"
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 jobs:
   linux_test_job:
     runs-on: ubuntu-latest
     name: Linux test
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - uses: pnpm/action-setup@v4
+      name: Install pnpm
       with:
-        node-version: '20'
-    - run: yarn install
-    - run: yarn build
+        version: latest
+        run_install: false
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+    - run: pnpm install
+    - run: pnpm build
   mac_test_job:
     runs-on: macos-latest
     name: macOS test
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '20'
-    - run: yarn install
-    - run: yarn build
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: latest
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: pnpm install
+      - run: pnpm build
   win_test_job:
     runs-on: windows-latest
     name: Windows test
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '20'
-    - run: yarn install
-    - run: yarn build
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: latest
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: pnpm install
+      - run: pnpm build
